@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function (){
     return view('welcome');
 });
+
+Route::get('/login', [\App\Http\Controllers\auth\AuthController::class, 'index'])->name('login');
+Route::get('/register', [\App\Http\Controllers\auth\AuthController::class, 'index'])->name('register');
+Route::get('/password', [\App\Http\Controllers\auth\AuthController::class, 'index'])->name('password.request');
