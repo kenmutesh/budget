@@ -5,3 +5,5 @@
 4. Expense Filtering and Sorting: Enable users to filter and sort their expense data based on various criteria such as date, category, amount, etc., to facilitate analysis and tracking.
 5. Budget Alerts and Reminders: Implement alerts or reminders to notify users when they approach or exceed their budget limits for specific categories or overall budget.
 6. Expense Attachments: Allow users to upload and attach receipts or supporting documents to their expense entries for reference and record-keeping.
+7. Authenticate user both mail and social media
+8. send weekly expense mail
