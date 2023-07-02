@@ -16,30 +16,58 @@
             relative z-10">
                         <p class="w-full text-4xl font-medium text-center leading-snug font-serif">Sign up for an account</p>
                         <div class="w-full mt-6 mr-0 mb-0 ml-0 relative space-y-8">
+                            <form method="POST" action="{{ route('register.post') }}" class="w-full mt-6 mr-0 mb-0 ml-0 relative space-y-8"">
+                            @csrf
+                            @if($errors->any())
+                                <div class="errors">
+                                    <ul>
+                                        <div class="flex bg-red-100 rounded-lg p-4 mb-4 text-sm text-red-700" role="alert">
+                                            <svg class="w-5 h-5 inline mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+                                            </svg>
+                                            <div class="flex">
+                                                <ul>
+                                                    @foreach($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </ul>
+                                </div>
+                            @endif
                             <div class="relative">
                                 <p class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600
                   absolute">Username</p>
-                                <input placeholder="John" type="text" class="border placeholder-gray-400 focus:outline-none
+                                <input placeholder="John" type="text" name="username" value="{{old('username')}}" class="border placeholder-gray-400 focus:outline-none
                   focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white
                   border-gray-300 rounded-md"/>
                             </div>
                             <div class="relative">
                                 <p class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600 absolute">Email</p>
-                                <input placeholder="123@ex.com" type="text" class="border placeholder-gray-400 focus:outline-none
+                                <input placeholder="123@ex.com" type="email" name="email" value="{{old('email')}}" class="border placeholder-gray-400 focus:outline-none
                   focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white
                   border-gray-300 rounded-md"/>
                             </div>
                             <div class="relative">
                                 <p class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600
                   absolute">Password</p>
-                                <input placeholder="Password" type="password" class="border placeholder-gray-400 focus:outline-none
+                                <input placeholder="Password" type="password" name="password" class="border placeholder-gray-400 focus:outline-none
                   focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white
                   border-gray-300 rounded-md"/>
                             </div>
                             <div class="relative">
-                                <a class="w-full inline-block pt-4 pr-5 pb-4 pl-5 text-xl font-medium text-center text-white bg-indigo-500
-                  rounded-lg transition duration-200 hover:bg-indigo-600 ease">Submit</a>
+                                <p class="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600
+                  absolute">confirm password</p>
+                                <input placeholder="confirm Password" name="password_confirmation" type="password" class="border placeholder-gray-400 focus:outline-none
+                  focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white
+                  border-gray-300 rounded-md"/>
                             </div>
+                            <div class="relative">
+                                <button class="w-full inline-block pt-4 pr-5 pb-4 pl-5 text-xl font-medium text-center text-white bg-indigo-500
+                  rounded-lg transition duration-200 hover:bg-indigo-600 ease cursor-pointer">Submit</button>
+                            </div>
+                            </form>
                         </div>
                     </div>
                     <svg viewbox="0 0 91 91" class="absolute top-0 left-0 z-0 w-32 h-32 -mt-12 -ml-12 text-yellow-300

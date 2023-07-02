@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
     ];
@@ -42,4 +42,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function budgetFilled()
+    {
+        // Assuming you have a one-to-one relationship between User and Budget models
+        return $this->hasOne(EstimateBudget::class)->exists();
+    }
 }

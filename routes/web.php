@@ -13,10 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function (){
-    return view('welcome');
+
+Route::middleware('guest')->group(function (){
+    Route::get('/', function (){
+        return view('welcome');
+    });
+
+    Route::get('/login', [\App\Http\Controllers\auth\AuthController::class, 'index'])->name('login');
+    Route::post('/login-post', [\App\Http\Controllers\auth\AuthController::class, 'login'])->name('login.post');
+    Route::get('/register', [\App\Http\Controllers\auth\AuthController::class, 'index'])->name('register');
+    Route::post('/register-user', [\App\Http\Controllers\auth\AuthController::class, 'store'])->name('register.post');
+    Route::get('/password', [\App\Http\Controllers\auth\AuthController::class, 'index'])->name('password.request');
+
+});
+Route::middleware('auth','checkBudget')->group(function (){
+    Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 });
 
-Route::get('/login', [\App\Http\Controllers\auth\AuthController::class, 'index'])->name('login');
-Route::get('/register', [\App\Http\Controllers\auth\AuthController::class, 'index'])->name('register');
-Route::get('/password', [\App\Http\Controllers\auth\AuthController::class, 'index'])->name('password.request');
+Route::get('/fill-budget', [\App\Http\Controllers\EstimateBudgetController::class, 'index'])->name('fill-budget');
