@@ -32,3 +32,4 @@ Route::middleware('auth','checkBudget')->group(function (){
 });
 
 Route::get('/fill-budget', [\App\Http\Controllers\EstimateBudgetController::class, 'index'])->name('fill-budget');
+Route::post('/set-budget', [\App\Http\Controllers\EstimateBudgetController::class, 'store'])->name('set-budget');

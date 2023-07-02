@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\EstimateBudget;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class EstimateBudgetController extends Controller
 {
@@ -12,7 +14,10 @@ class EstimateBudgetController extends Controller
      */
     public function index()
     {
-        //
+        $apiUrl = 'https://openexchangerates.org/api/currencies.json';
+        $response = Http::get($apiUrl);
+
+        return view('pages.budget');
     }
 
     /**
@@ -28,7 +33,18 @@ class EstimateBudgetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = Auth::user();
+
+        $userBudget = EstimateBudget::create([
+            'user_id' => $user->id,
+            'amount' => $request->input('amount'),
+            'currency' => $request->input('currency'),
+            'description' => $request->input('description')
+        ]);
+
+        if ($userBudget){
+            return redirect()->route('home');
+        }
     }
 
     /**
