@@ -16,14 +16,15 @@
                         <option value="GBP">GBP</option>
                     </select>
 
-                    <input class="border-b border-teal-500 w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" name="amount" placeholder="Amount">
+                    <input class="border-b-2 border-indigo-600 w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" name="amount" placeholder="Amount">
 
                 </div>
 
                 <textarea class="appearance-none bg-white border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-teal-500 mt-4" name="description" placeholder="Description"></textarea>
+                <button type="submit" class="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2">set budget</button>
 
-                <button type="submit" class="mt-4 bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
             </form>
         </div>
+
     </div>
 @endsection

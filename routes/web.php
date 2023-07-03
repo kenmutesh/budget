@@ -29,6 +29,8 @@ Route::middleware('guest')->group(function (){
 Route::middleware('auth','checkBudget')->group(function (){
     Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+    Route::post('/logout', [\App\Http\Controllers\auth\AuthController::class, 'destroy'])->name('logout');
+
 });
 
 Route::get('/fill-budget', [\App\Http\Controllers\EstimateBudgetController::class, 'index'])->name('fill-budget');
